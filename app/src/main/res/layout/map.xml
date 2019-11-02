@@ -1,29 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginTop="8dp"
     android:orientation="vertical">
 
-    <TextView
-        android:text="a"
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
-
-    <TextView
-        android:text="a"
-        android:id="@+id/tvLatitute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
-
-    <TextView
-        android:text="a"
-        android:id="@+id/tvLongitute"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
-    <TextView
-        android:layout_marginTop="8dp"
-        android:background="#111"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"></TextView>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="a"></TextView>
+
+        <TextView
+            android:id="@+id/tvLatitute"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="a"></TextView>
+
+        <TextView
+            android:id="@+id/tvLongitute"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="a"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnXem1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xem"></Button>
+
+        <Button
+            android:id="@+id/btnSua1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sửa"></Button>
+
+        <Button
+            android:id="@+id/btnXoa1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Xóa"></Button>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#111"></TextView>
 </LinearLayout>

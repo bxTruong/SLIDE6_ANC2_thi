@@ -44,6 +44,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private EditText edtSearch;
     private PlacesClient placesClient;
 
+    public String name;
+    public double latitute;
+    public double longitute;
+    private Dao dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,14 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
 
-//        int position=getIntent().getIntExtra("position",-1);
-//        Log.e("POSTION",position+"");
-//        if(position!=-1){
-//            Dao dao=new Dao(this);
-//            List<Map> mapList=dao.getAllMap();
-//            Map map=mapList.get(position);
-//            moveCamera(new LatLng(map.getLatitute(), map.getLongitute()), DEFAULT_ZOOM, map.getName());
-//        }
+
     }
 
 
@@ -124,46 +122,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    //
-//    /**
-//     * Manipulates the map once available.
-//     * This callback is triggered when the map is ready to be used.
-//     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-//     * we just add a marker near Sydney, Australia.
-//     * If Google Play services is not installed on the device, the user will be prompted to install
-//     * it inside the SupportMapFragment. This method will only be triggered once the user has
-//     * installed Google Play services and returned to the app.
-//     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        name=getIntent().getStringExtra("name");
+        longitute=getIntent().getDoubleExtra("longitute",-1);
+        latitute=getIntent().getDoubleExtra("latitute",-1);
 
-        Dao dao = new Dao(this);
-        List<Map> mapList = dao.getAllMap();
-        if (mapList.size() != 0) {
-            for (int i = 0; i < mapList.size(); i++) {
-                Map map = mapList.get(i);
-                LatLng cdfpt = new LatLng(map.getLatitute(), map.getLongitute());
-                mMap.addMarker(new MarkerOptions().position(cdfpt).title(map.getName()));
-            }
-        }
+        moveCamera(new LatLng(latitute, longitute), DEFAULT_ZOOM, name);
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
 
                 Toast.makeText(MapsActivity.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(MapsActivity.this, AddMarker.class);
-                intent.putExtra("id", marker.getPosition());
-                intent.putExtra("name", marker.getTitle());
-                intent.putExtra("latitude", marker.getPosition().latitude);
-                intent.putExtra("longitude", marker.getPosition().longitude);
-                startActivity(intent);
 
                 return false;
             }
@@ -208,22 +182,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-
-        MapAdapter addMarker = new MapAdapter();
-        Log.e("POSTION", addMarker.id + "");
-        mMap.clear();
-        Dao dao = new Dao(this);
-        List<Map> mapList = dao.getAllMap();
-        if (mapList.size() != 0) {
-            for (int i = 0; i < mapList.size(); i++) {
-                Map map = mapList.get(i);
-                LatLng cdfpt = new LatLng(map.getLatitute(), map.getLongitute());
-                mMap.addMarker(new MarkerOptions().position(cdfpt).title(map.getName()));
-            }
-        }
-        moveCamera(new LatLng(addMarker.latitute, addMarker.longitute), DEFAULT_ZOOM, addMarker.name);
-    }
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//
+//        MapAdapter addMarker = new MapAdapter();
+//        Log.e("POSTION", addMarker.id + "");
+//        mMap.clear();
+//        Dao dao = new Dao(this);
+//        List<Map> mapList = dao.getAllMap();
+//        if (mapList.size() != 0) {
+//            for (int i = 0; i < mapList.size(); i++) {
+//                Map map = mapList.get(i);
+//                LatLng cdfpt = new LatLng(map.getLatitute(), map.getLongitute());
+//                mMap.addMarker(new MarkerOptions().position(cdfpt).title(map.getName()));
+//            }
+//        }
+//        moveCamera(new LatLng(addMarker.latitute, addMarker.longitute), DEFAULT_ZOOM, addMarker.name);
+//    }
 }

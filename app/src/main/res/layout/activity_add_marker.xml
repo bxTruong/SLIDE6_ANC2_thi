@@ -9,50 +9,6 @@
     android:padding="16dp"
     tools:context=".AddMarker">
 
-    <EditText
-        android:id="@+id/edtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mời Nhập Tên Địa Điểm"></EditText>
-
-    <EditText
-        android:id="@+id/edtLatitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Mời Nhập Kinh Độ"></EditText>
-
-    <EditText
-        android:id="@+id/edtLongitude"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Mời Nhập Vĩ Độ"></EditText>
-
-    <LinearLayout
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnThem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="newMarker"
-            android:text="Thêm"></Button>
-
-        <Button
-            android:enabled="false"
-            android:id="@+id/btnSua"
-            android:layout_marginLeft="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="updateMarker"
-            android:text="Sửa"></Button>
-    </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcMarker"
         android:layout_width="match_parent"

@@ -34,12 +34,9 @@ public class AddMarker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_marker);
 
-        edtName = findViewById(R.id.edtName);
-        edtLongitude = findViewById(R.id.edtLongitude);
-        edtLatitude = findViewById(R.id.edtLatitude);
+
         rcMarker = findViewById(R.id.rcMarker);
-        btnThem = findViewById(R.id.btnThem);
-        btnSua = findViewById(R.id.btnSua);
+
 
         dao = new Dao(this);
 
@@ -50,19 +47,6 @@ public class AddMarker extends AppCompatActivity {
         LinearLayoutManager vertical = new LinearLayoutManager(this);
         rcMarker.setLayoutManager(vertical);
 
-        latitute = getIntent().getDoubleExtra("latitude", -1);
-        longitute = getIntent().getDoubleExtra("longitude", -1);
-        name = getIntent().getStringExtra("name");
-        if (latitute != -1 && longitute != -1) {
-            edtName.setText(name);
-            edtLongitude.setText(longitute + "");
-            edtLatitude.setText(latitute + "");
-            btnThem.setEnabled(false);
-            btnSua.setEnabled(true);
-        } else {
-            btnThem.setEnabled(true);
-            btnSua.setEnabled(false);
-        }
     }
 
     public void newMarker(View view) {
